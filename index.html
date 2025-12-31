@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学式WorkShop!! | 売れる・話せる・伝わる技術</title>
+    <title>学(GAKU)式 WorkShop!! | 売れる・話せる・伝わる技術</title>
     <style>
         /* --- 基本設定 --- */
         :root {
@@ -89,11 +89,21 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo .ruby {
+            font-size: 0.8rem;
+            color: var(--highlight-color);
+            margin-top: -15px;
+            margin-left: -20px; /* 位置調整 */
+            margin-right: 5px;
         }
 
         /* --- ヒーローセクション --- */
         .hero {
-            /* ▼▼▼ ファイル名を main.jpg に変更しました ▼▼▼ */
+            /* 背景画像の設定 */
             background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.7)), url('main.jpg');
             background-size: cover;
             background-position: center;
@@ -106,6 +116,22 @@
             margin-bottom: 25px;
             text-shadow: 0 2px 4px rgba(255,255,255,0.8);
             color: #222;
+        }
+
+        /* ルビのデザイン調整 */
+        .gaku-ruby {
+            display: inline-block;
+            position: relative;
+        }
+        .gaku-ruby::before {
+            content: "GAKU";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: var(--highlight-color);
+            font-weight: bold;
         }
 
         .hero .sub-copy {
@@ -189,9 +215,59 @@
             margin: 20px 0;
         }
 
+        /* --- ▼▼▼ 新設：サービスメニュー ▼▼▼ --- */
+        .service {
+            background-color: white;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .service-note {
+            font-size: 0.85rem;
+            color: #666;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
         /* --- 講師紹介 --- */
         .instructor {
-            background-color: white;
+            background-color: #f9f9f9;
         }
 
         .instructor-profile {
@@ -270,28 +346,16 @@
             font-size: 0.9rem;
         }
 
-        /* ▼▼▼ スマホ対応（レスポンシブ）の設定 ▼▼▼ */
+        /* --- スマホ対応 --- */
         @media (max-width: 768px) {
-            /* ヒーローセクションの文字をスマホ用に小さく */
-            .hero h1 {
-                font-size: 2rem; 
-            }
-            .hero .sub-copy {
-                font-size: 1.1rem;
-                padding: 5px 15px;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .btn {
-                padding: 12px 30px;
-                font-size: 1rem;
-            }
-
-            /* グリッドを縦並びに */
-            .method-grid {
+            .hero h1 { font-size: 2rem; }
+            .hero .sub-copy { font-size: 1.1rem; }
+            
+            .method-grid, 
+            .service-grid { /* サービスメニューも縦並びにする */
                 grid-template-columns: 1fr;
             }
+            
             .instructor-profile {
                 flex-direction: column;
                 text-align: center;
@@ -300,17 +364,17 @@
                 width: 200px;
                 height: 200px;
             }
-            .instructor-text {
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="container">
             <nav>
-                <div class="logo">学式WorkShop!!</div>
+                <div class="logo">
+                    学<span style="font-size:0.6em; vertical-align: top; color:#ff3300;">(GAKU)</span>式 WorkShop!!
+                </div>
                 <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">お問い合わせ</a>
             </nav>
         </div>
@@ -319,7 +383,7 @@
     <section class="hero">
         <div class="container">
             <div class="sub-copy">「売れる・話せる・伝わる」が手に入る！</div>
-            <h1>学式WorkShop!!</h1>
+            <h1><span class="gaku-ruby">学</span>式 WorkShop!!</h1>
             <p>実演販売の「売れる技術」× 俳優・モデルの「表現力」<br>
             人間力と成果が劇的にアップする、唯一無二の実践型ワークショップ</p>
             <a href="#contact" class="btn">プログラム詳細を見る</a>
@@ -337,7 +401,7 @@
                 <li>自分に自信がなく、前に出られない</li>
             </ul>
             <p style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 1.2rem;">
-                それ、全部「学式WorkShop!!」で変わります！
+                それ、全部「学(GAKU)式 WorkShop!!」で変わります！
             </p>
         </div>
     </section>
@@ -359,6 +423,38 @@
             <p style="text-align: center;">
                 座学だけではありません。「体験型・即実践」のワークで、身体と感情を使って楽しく習得します。
             </p>
+        </div>
+    </section>
+
+    <section class="service">
+        <div class="container">
+            <h2>選べる3つのスタイル</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>企業研修</h3>
+                    <p>チームビルディング、離職率改善、営業力強化に。御社の課題に合わせたカスタムメイドの研修を行います。</p>
+                    <div class="service-note">
+                        <span style="color: #ff3300;">●</span> 企業への訪問も可能です<br>
+                        (費用はヒアリングの上、お見積りいたします)
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <h3>ワークショップ</h3>
+                    <p>定期的に開催されるグループワーク。多様な参加者と共に、楽しみながらコミュニケーション力を磨きます。</p>
+                    <div class="service-note">
+                        一般参加・グループ参加歓迎
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <h3>個人レッスン</h3>
+                    <p>「オーディションに受かりたい」「大事なプレゼンがある」など、個人の目標に合わせたマンツーマン指導。</p>
+                    <div class="service-note">
+                        オンライン / 対面 対応可能
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -387,22 +483,22 @@
 
     <section class="achievements">
         <div class="container">
-            <h2>参加者の声・実績</h2>
+            [cite_start]<h2>参加者の声・実績 [cite: 95]</h2>
             <div class="voice-grid">
                 <div class="voice-box">
-                    <strong>受注率 2倍！</strong>
+                    [cite_start]<strong>受注率 2倍！ [cite: 101]</strong>
                     <p>展示会での受注率が以前の2倍になりました。（営業職）</p>
                 </div>
                 <div class="voice-box">
-                    <strong>離職率 0%</strong>
+                    [cite_start]<strong>離職率 0% [cite: 98]</strong>
                     <p>IT企業での導入後、離職率0%を達成し、チームワークが向上。</p>
                 </div>
                 <div class="voice-box">
-                    <strong>就職・合格</strong>
+                    [cite_start]<strong>就職・合格 [cite: 103]</strong>
                     <p>希望の会社に就職できた。オーディションに受かるようになった。</p>
                 </div>
                 <div class="voice-box">
-                    <strong>自信がついた</strong>
+                    [cite_start]<strong>自信がついた [cite: 105]</strong>
                     <p>自分の在り方がわかり、笑顔が自然に出るようになった。</p>
                 </div>
             </div>
