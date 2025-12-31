@@ -85,14 +85,13 @@
             height: 70px;
         }
 
-        /* --- ロゴデザイン（修正版：絶対配置でズレを防止） --- */
+        /* --- ロゴデザイン調整 --- */
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary-color);
         }
 
-        /* 文字グループの設定：以前のFlexboxを解除し、自然なテキスト配置へ */
         .logo-text-group {
             display: inline-block; 
         }
@@ -100,31 +99,29 @@
         /* 「学」を包む枠 */
         .gaku-wrapper {
             display: inline-block;
-            position: relative; /* ここを基準にGAKUを配置 */
-            margin-right: 2px;
+            position: relative;
+            margin-right: 0; /* 隙間をなくすため0に */
         }
 
-        /* 上に乗る「GAKU」：絶対配置で浮かせる */
+        /* 上に乗る「GAKU」：サイズ調整 */
         .gaku-ruby-text {
             position: absolute;
-            top: -0.6em; /* 文字の上に配置（フォントサイズに合わせて調整可） */
+            top: -0.6em; 
             left: 50%;
-            transform: translateX(-50%); /* 左右中央揃え */
+            transform: translateX(-50%);
             
-            font-size: 0.4em;
+            font-size: 0.3em; /* 0.4emから縮小して「学」の幅に収める */
             color: var(--highlight-color);
             font-weight: bold;
             font-family: Arial, sans-serif;
-            letter-spacing: 0.05em;
-            white-space: nowrap; /* 改行させない */
+            letter-spacing: 0; /* 文字間隔もなくしてコンパクトに */
+            white-space: nowrap;
             width: 100%;
             text-align: center;
         }
 
-        /* 下の「学」 */
         .gaku-kanji {
             font-size: 1em;
-            /* 色は親要素に従う */
         }
 
         /* --- ヒーローセクション --- */
@@ -141,9 +138,7 @@
             margin-bottom: 25px;
             text-shadow: 0 2px 4px rgba(255,255,255,0.8);
             color: #222;
-            line-height: 1.4; /* 行間を少し広げて、上のGAKUが切れないように */
-            
-            /* Flexboxを解除し、テキストとして中央揃え */
+            line-height: 1.4;
             display: block; 
             text-align: center;
         }
@@ -229,7 +224,7 @@
             margin: 20px 0;
         }
 
-        /* --- サービスメニュー（3分割） --- */
+        /* --- サービスメニュー --- */
         .service {
             background-color: white;
         }
@@ -273,7 +268,7 @@
         .service-card p {
             font-size: 0.95rem;
             margin-bottom: 20px;
-            flex-grow: 1; /* 高さを揃えるため */
+            flex-grow: 1;
         }
 
         .service-note {
@@ -366,11 +361,10 @@
             font-size: 0.9rem;
         }
 
-        /* --- スマホ対応（レスポンシブ） --- */
+        /* --- スマホ対応 --- */
         @media (max-width: 768px) {
             .hero h1 { 
                 font-size: 2.2rem;
-                /* スマホでは行間をさらに広げて見やすく */
                 line-height: 1.6;
             }
             .hero .sub-copy { 
@@ -385,7 +379,6 @@
                 font-size: 1rem;
             }
 
-            /* グリッドを縦並びに */
             .method-grid, 
             .service-grid {
                 grid-template-columns: 1fr;
@@ -411,11 +404,9 @@
                     <span class="logo-text-group">
                         <span class="gaku-wrapper">
                             <span class="gaku-ruby-text">GAKU</span>
-                            <span class="gaku-kanji">学</span>
-                        </span>
-                        式 WorkShop!!
+                            <span class="gaku-kanji">学</span></span>式 WorkShop!!
                     </span>
-                </div>
+                    </div>
                 <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">お問い合わせ</a>
             </nav>
         </div>
@@ -429,11 +420,9 @@
                 <span class="logo-text-group">
                     <span class="gaku-wrapper">
                         <span class="gaku-ruby-text">GAKU</span>
-                        <span class="gaku-kanji" style="color: #222;">学</span> 
-                    </span>
-                    式 WorkShop!!
+                        <span class="gaku-kanji" style="color: #222;">学</span></span>式 WorkShop!!
                 </span>
-            </h1>
+                </h1>
 
             <p>実演販売の「売れる技術」× 俳優・モデルの「表現力」<br>
             人間力と成果が劇的にアップする、唯一無二の実践型ワークショップ</p>
@@ -452,7 +441,7 @@
                 <li>自分に自信がなく、前に出られない</li>
             </ul>
             <p style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 1.2rem;">
-                それ、全部「学(GAKU)式 WorkShop!!」で変わります！
+                それ、全部「学式 WorkShop!!」で変わります！
             </p>
         </div>
     </section>
