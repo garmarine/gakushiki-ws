@@ -85,7 +85,7 @@
             height: 70px;
         }
 
-        /* --- ロゴデザイン（修正済：GAKUを小さく学の上に乗せる） --- */
+        /* --- ロゴデザイン --- */
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
@@ -97,7 +97,7 @@
         .gaku-wrapper {
             display: inline-block;
             position: relative;
-            margin-right: 0; /* 隙間なし */
+            margin-right: 0;
         }
 
         .gaku-ruby-text {
@@ -105,7 +105,7 @@
             top: -0.6em; 
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.3em; /* 学の幅に収まるサイズ */
+            font-size: 0.3em; 
             color: var(--highlight-color);
             font-weight: bold;
             font-family: Arial, sans-serif;
@@ -119,10 +119,9 @@
 
         /* --- ヒーローセクション --- */
         .hero {
-            /* main.jpg を背景として設定 */
             background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.7)), url('main.jpg');
             background-size: cover;
-            background-position: center; /* 画像の中央を表示 */
+            background-position: center; /* PCでは中央 */
             text-align: center;
             padding: 120px 0;
         }
@@ -184,7 +183,7 @@
             left: 0;
         }
 
-        /* --- 強み（メソッド）セクション：画像対応 --- */
+        /* --- 強み（メソッド）セクション --- */
         .method {
             background-color: #f0f8ff;
         }
@@ -206,14 +205,14 @@
 
         .method-img-area {
             width: 100%;
-            height: 250px; /* 画像エリアの高さ */
+            height: 250px;
             background-color: #ddd;
         }
         
         .method-img-area img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 比率が違っても中央でトリミングして埋める */
+            object-fit: cover;
             object-position: center;
         }
 
@@ -313,8 +312,12 @@
         .mark-good { color: var(--highlight-color); }
         .mark-bad { color: #aaa; }
 
+        /* スクロールヒント（PCでは非表示） */
+        .scroll-hint {
+            display: none;
+        }
 
-        /* --- サービスメニュー：画像対応 --- */
+        /* --- サービスメニュー --- */
         .service {
             background-color: #f9f9f9;
         }
@@ -340,15 +343,15 @@
 
         .service-img-area {
             width: 100%;
-            height: 200px; /* カードの画像エリア高さ */
+            height: 200px;
             background-color: #ddd;
         }
 
         .service-img-area img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 崩れず埋める */
-            object-position: center; /* 真ん中を表示 */
+            object-fit: cover;
+            object-position: center;
         }
 
         .service-content {
@@ -406,7 +409,7 @@
             width: 300px;
             height: 300px;
             background-color: #ddd;
-            border-radius: 50%; /* ここで丸く切り抜く */
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -418,8 +421,8 @@
         .instructor-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 正方形でなくても丸く収める */
-            object-position: center; /* 顔を真ん中に */
+            object-fit: cover;
+            object-position: center;
         }
 
         .instructor-text h3 {
@@ -473,14 +476,19 @@
             font-size: 0.9rem;
         }
 
-        /* --- スマホ対応 --- */
+        /* --- ▼▼▼ スマホ対応（修正版） ▼▼▼ --- */
         @media (max-width: 768px) {
+            .hero {
+                /* 【修正点】スマホでは写真の「左側(20%)」を中心に表示する（人物が見切れないように） */
+                background-position: 20% center; 
+            }
+
             .hero h1 { 
                 font-size: 2.2rem;
-                line-height: 1.6;
+                line-height: 1.4;
             }
             .hero .sub-copy { 
-                font-size: 1.1rem; 
+                font-size: 1rem; 
                 padding: 5px 15px;
             }
             .hero p {
@@ -491,6 +499,7 @@
                 font-size: 1rem;
             }
 
+            /* グリッドを縦並びに */
             .method-grid, 
             .service-grid {
                 grid-template-columns: 1fr;
@@ -505,12 +514,29 @@
                 height: 200px;
             }
 
+            /* 比較表のスクロール対応 */
             .compare-table {
                 min-width: 600px;
             }
             .point-bubble {
                 font-size: 0.9rem;
             }
+
+            /* 【修正点】スマホ用スクロール案内を表示 */
+            .scroll-hint {
+                display: block !important;
+                text-align: right;
+                font-size: 0.8rem;
+                color: var(--primary-color);
+                margin-bottom: 5px;
+                animation: blink 2s infinite; /* 点滅アニメーション */
+            }
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -603,6 +629,8 @@
                 ▶ 実演販売と演技メソッド<br>
                 唯一無二の融合メソッド！
             </div>
+
+            <p class="scroll-hint">👉 右へスクロールして詳細を見る</p>
 
             <div class="table-scroll">
                 <table class="compare-table">
