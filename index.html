@@ -630,18 +630,16 @@
                 padding: 25px 20px;
             }
 
-            /* --- ▼▼▼ 【修正】スマホ用：縦型カード形式の比較表 ▼▼▼ --- */
+            /* --- スマホ用：縦型カード形式の比較表 --- */
             .compare-table {
-                min-width: auto; /* 幅制限解除 */
+                min-width: auto;
                 background: transparent;
             }
             
-            /* ヘッダー行を非表示 */
             .compare-table thead {
                 display: none;
             }
             
-            /* 行をカード化 */
             .compare-table tr {
                 display: block;
                 margin-bottom: 25px;
@@ -651,11 +649,10 @@
                 overflow: hidden;
             }
             
-            /* 1列目（項目名）をカードのタイトルにする */
             .compare-table th {
                 display: block;
                 width: 100%;
-                background-color: #003366; /* 濃い青で見出し感 */
+                background-color: #003366;
                 color: white;
                 text-align: center;
                 padding: 10px;
@@ -663,7 +660,6 @@
                 border-bottom: none;
             }
             
-            /* セルをリスト表示に */
             .compare-table td {
                 display: flex;
                 justify-content: space-between;
@@ -679,16 +675,14 @@
                 border-bottom: none;
             }
             
-            /* 学式の行を目立たせる */
             .compare-table td.col-highlight {
-                background-color: #fffde7; /* 薄い黄色 */
+                background-color: #fffde7;
                 border: 2px solid var(--accent-color) !important;
                 border-radius: 5px;
-                margin: 5px 10px; /* カード内で少し浮かせる */
+                margin: 5px 10px;
                 width: auto;
             }
             
-            /* data-labelを使って項目名を表示 */
             .compare-table td::before {
                 content: attr(data-label);
                 font-weight: bold;
@@ -734,7 +728,7 @@
                             <span class="gaku-kanji">学</span></span>式 WorkShop!!
                     </span>
                 </div>
-                <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">お問い合わせ</a>
+                <a href="https://forms.gle/nAFGfcQ1vb5Wm2PD7" target="_blank" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">お問い合わせ</a>
             </nav>
         </div>
     </header>
@@ -1032,7 +1026,7 @@
             <h2>人生を変えるワークショップを体験しよう</h2>
             <p>企業研修、個人レッスン、ワークショップ開催のご依頼はこちらから</p>
             <br>
-            <a href="#" class="btn">お問い合わせ・お申し込み</a>
+            <a href="https://forms.gle/nAFGfcQ1vb5Wm2PD7" target="_blank" class="btn">お問い合わせ・お申し込み</a>
         </div>
     </section>
 
@@ -1043,7 +1037,7 @@
     </footer>
 
     <div class="sticky-cta">
-        <a href="#contact" class="btn">お問い合わせ・お申し込み</a>
+        <a href="https://forms.gle/nAFGfcQ1vb5Wm2PD7" target="_blank" class="btn">お問い合わせ・お申し込み</a>
     </div>
 
     <script>
