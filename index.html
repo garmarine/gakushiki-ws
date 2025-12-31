@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学式WorkShop!! | 売れる・話せる・伝わる技術</title>
+    <style>
+        /* --- 基本設定 --- */
+        :root {
+            --primary-color: #0066cc; /* 青 */
+            --accent-color: #ffcc00;  /* 黄 */
+            --highlight-color: #ff3300; /* 赤 */
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+        }
+
+        /* --- レイアウト共通 --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--highlight-color);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* --- ヒーローセクション --- */
+        .hero {
+            /* ▼▼▼ ファイル名を main.jpg に変更しました ▼▼▼ */
+            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.7)), url('main.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+            color: #222;
+        }
+
+        .hero .sub-copy {
+            font-size: 1.5rem;
+            color: var(--highlight-color);
+            font-weight: bold;
+            margin-bottom: 30px;
+            background: #fff;
+            display: inline-block;
+            padding: 10px 30px;
+            transform: rotate(-2deg);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            border: 2px solid var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        /* --- お悩みセクション --- */
+        .problem {
+            background-color: white;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .check-list li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .check-list li::before {
+            content: "✔";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- 強み（メソッド）セクション --- */
+        .method {
+            background-color: #f0f8ff;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .method-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .method-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .plus-icon {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+
+        /* --- 講師紹介 --- */
+        .instructor {
+            background-color: white;
+        }
+
+        .instructor-profile {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .instructor-img {
+            width: 300px;
+            height: 300px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        .instructor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instructor-text h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+        }
+
+        .instructor-text .title {
+            color: var(--primary-color);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* --- 実績・声 --- */
+        .achievements {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .achievements h2 {
+            color: white;
+        }
+
+        .voice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .voice-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .voice-box strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- フッター --- */
+        footer {
+            background-color: #eee;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ▼▼▼ スマホ対応（レスポンシブ）の設定 ▼▼▼ */
+        @media (max-width: 768px) {
+            /* ヒーローセクションの文字をスマホ用に小さく */
+            .hero h1 {
+                font-size: 2rem; 
+            }
+            .hero .sub-copy {
+                font-size: 1.1rem;
+                padding: 5px 15px;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            /* グリッドを縦並びに */
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+            .instructor-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            .instructor-img {
+                width: 200px;
+                height: 200px;
+            }
+            .instructor-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">学式WorkShop!!</div>
+                <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="sub-copy">「売れる・話せる・伝わる」が手に入る！</div>
+            <h1>学式WorkShop!!</h1>
+            <p>実演販売の「売れる技術」× 俳優・モデルの「表現力」<br>
+            人間力と成果が劇的にアップする、唯一無二の実践型ワークショップ</p>
+            <a href="#contact" class="btn">プログラム詳細を見る</a>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <h2>こんなお悩みありませんか？</h2>
+            <ul class="check-list">
+                <li>商談・営業で断られてばかり…</li>
+                <li>プレゼンで緊張して言いたいことが言えない</li>
+                <li>「話が長い・伝わらない」と言われる</li>
+                <li>チームメンバーとの会話が噛み合わない</li>
+                <li>自分に自信がなく、前に出られない</li>
+            </ul>
+            <p style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 1.2rem;">
+                それ、全部「学式WorkShop!!」で変わります！
+            </p>
+        </div>
+    </section>
+
+    <section class="method">
+        <div class="container">
+            <h2>なぜ変われるのか？<br>唯一無二の融合メソッド</h2>
+            <div class="method-grid">
+                <div class="method-card">
+                    <h3>実演販売の「売れる技術」</h3>
+                    <p>買う気がない人、興味ゼロの相手にもプレゼンして響感してもらい、「欲しい！」と思わせるプロの技術。</p>
+                </div>
+                <div class="method-card">
+                    <h3>俳優・モデルの「表現力」</h3>
+                    <p>オーディションという競争社会で「選ばれる」ための自己表現。相手に伝わる演技メソッド。</p>
+                </div>
+            </div>
+            <div class="plus-icon">×</div>
+            <p style="text-align: center;">
+                座学だけではありません。「体験型・即実践」のワークで、身体と感情を使って楽しく習得します。
+            </p>
+        </div>
+    </section>
+
+    <section class="instructor">
+        <div class="container">
+            <h2>講師プロフィール</h2>
+            <div class="instructor-profile">
+                <div class="instructor-img">
+                    <img src="https://via.placeholder.com/300x300?text=Gaku+Fujimoto" alt="藤本学">
+                </div>
+                <div class="instructor-text">
+                    <span class="title">俳優・モデル・実演販売士・ワークショップ講師</span>
+                    <h3>藤本 学 (Gaku Fujimoto)</h3>
+                    <p>俳優・モデル歴33年、実演販売歴26年。<br>
+                    プレゼン接客数は30万人以上。</p>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">
+                        <strong>主な実績：</strong><br>
+                        TVCM出演100本以上（クレラップ、ヘルシア緑茶、TOYOTAなど）。<br>
+                        実演販売では歯ブラシから車まで販売。<br>
+                        IT企業研修にて離職率0%を達成した実績あり。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements">
+        <div class="container">
+            <h2>参加者の声・実績</h2>
+            <div class="voice-grid">
+                <div class="voice-box">
+                    <strong>受注率 2倍！</strong>
+                    <p>展示会での受注率が以前の2倍になりました。（営業職）</p>
+                </div>
+                <div class="voice-box">
+                    <strong>離職率 0%</strong>
+                    <p>IT企業での導入後、離職率0%を達成し、チームワークが向上。</p>
+                </div>
+                <div class="voice-box">
+                    <strong>就職・合格</strong>
+                    <p>希望の会社に就職できた。オーディションに受かるようになった。</p>
+                </div>
+                <div class="voice-box">
+                    <strong>自信がついた</strong>
+                    <p>自分の在り方がわかり、笑顔が自然に出るようになった。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center; padding: 100px 0;">
+        <div class="container">
+            <h2>人生を変えるワークショップを体験しよう</h2>
+            <p>企業研修、個人レッスン、ワークショップ開催のご依頼はこちらから</p>
+            <br>
+            <a href="#" class="btn">お問い合わせ・お申し込み</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 学式WorkShop (Gaku Fujimoto). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
