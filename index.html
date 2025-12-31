@@ -583,6 +583,34 @@
             font-size: 1.2rem;
         }
 
+        /* --- スケジュール用スタイル --- */
+        .schedule-list {
+            background: #f9f9f9;
+            border: 2px solid #003366;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .schedule-item {
+            border-bottom: 1px dashed #ccc;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .date-text {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
         /* --- フッター --- */
         footer {
             background-color: #eee;
@@ -698,6 +726,13 @@
             }
             
             .point-bubble { font-size: 0.9rem; }
+            
+            /* スケジュール */
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
 
             /* --- スマホ用追従ボタン：LINEも追加して2段に --- */
             .sticky-cta {
@@ -918,6 +953,43 @@
             <div class="faq-item"><details><summary class="faq-question"><span class="faq-q-mark">Q.</span>企業研修のカリキュラムはカスタマイズできますか？</summary><div class="faq-answer">はい、可能です。<br>「営業力強化」「チームビルディング」「離職率低下」など、御社の課題や目的に合わせて最適なプログラムをご提案させていただきます。お気軽にご相談ください。</div></details></div>
             <div class="faq-item"><details><summary class="faq-question"><span class="faq-q-mark">Q.</span>オンラインでの受講は可能ですか？</summary><div class="faq-answer">「個人レッスン」はオンライン（Zoom等）でも対応可能です。<br>「ワークショップ」や「企業研修」につきましては、身体を使った実践ワークの効果を最大化するため、基本的には対面での実施を推奨しておりますが、ご状況に合わせて柔軟に対応いたします。</div></details></div>
             <div class="faq-item"><details><summary class="faq-question"><span class="faq-q-mark">Q.</span>支払い方法や見積もりについて教えてください。</summary><div class="faq-answer">企業研修の場合は、ヒアリング後に御見積書を作成いたします。<br>ワークショップや個人レッスンのお支払いにつきましては、お問い合わせ後に詳細をご案内させていただきます。</div></details></div>
+        </div>
+    </section>
+
+    <section class="schedule" style="background-color: #fff;">
+        <div class="container fade-in">
+            <h2>最新開催スケジュール</h2>
+            <p style="text-align: center; margin-bottom: 30px;">
+                少人数制のため、各回定員になり次第締め切ります。<br>
+                お早めにお申し込みください。
+            </p>
+
+            <div class="schedule-list">
+                <div class="schedule-item">
+                    <div class="date-text">
+                        <span style="color: #0066cc;">●</span> 2026年 2月15日(土) 13:00〜16:00
+                    </div>
+                    <div style="color: #ff3300; font-weight: bold;">残り3名</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="date-text">
+                        <span style="color: #0066cc;">●</span> 2026年 2月28日(土) 13:00〜16:00
+                    </div>
+                    <div style="color: #0066cc; font-weight: bold;">受付中</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="date-text">
+                        <span style="color: #0066cc;">●</span> 2026年 3月14日(土) 13:00〜16:00
+                    </div>
+                    <div style="color: #0066cc; font-weight: bold;">受付中</div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 25px; font-size: 0.9rem; line-height: 1.8;">
+                ※企業研修・個人レッスンの日程はご相談に応じます。<br>
+                <strong>※企業研修をご検討中の担当者様の見学・体験参加も歓迎いたします。</strong><br>
+                「どんな雰囲気か見てみたい」という方も、下記フォームよりお気軽にお申し込みください。
+            </p>
         </div>
     </section>
 
