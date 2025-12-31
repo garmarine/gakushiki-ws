@@ -14,6 +14,10 @@
             --bg-color: #f9f9f9;
         }
 
+        html {
+            scroll-behavior: smooth; /* ページ内リンクでスルスル動く設定 */
+        }
+
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             line-height: 1.6;
@@ -520,7 +524,7 @@
             margin-bottom: 10px;
         }
 
-        /* --- ▼▼▼ 新規追加：Q&Aセクション ▼▼▼ --- */
+        /* --- Q&Aセクション --- */
         .faq {
             background-color: #fff;
         }
@@ -543,7 +547,6 @@
             list-style: none; /* デフォルトの三角を消す */
         }
         
-        /* アコーディオンのアイコン（＋/－） */
         .faq-question::after {
             content: '+';
             position: absolute;
@@ -566,7 +569,6 @@
             font-size: 0.95rem;
         }
         
-        /* 質問の頭にQをつける */
         .faq-q-mark {
             color: var(--primary-color);
             margin-right: 10px;
@@ -638,7 +640,6 @@
                 animation: blink 2s infinite;
             }
 
-            /* --- スマホ用・追従ボタンの表示設定 --- */
             .sticky-cta {
                 display: block;
                 position: fixed;
@@ -699,7 +700,8 @@
 
             <p>実演販売の「売れる技術」× 俳優・モデルの「表現力」<br>
             人間力と成果が劇的にアップする、唯一無二の実践型ワークショップ</p>
-            <a href="#contact" class="btn">プログラム詳細を見る</a>
+            
+            <a href="#service" class="btn">プログラム詳細を見る</a>
         </div>
     </section>
 
@@ -832,7 +834,7 @@
         </div>
     </section>
 
-    <section class="service">
+    <section class="service" id="service">
         <div class="container fade-in">
             <h2>選べる3つのスタイル</h2>
             <div class="service-grid">
