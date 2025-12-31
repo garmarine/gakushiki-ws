@@ -10,6 +10,7 @@
             --primary-color: #0066cc; /* 青 */
             --accent-color: #ffcc00;  /* 黄 */
             --highlight-color: #ff3300; /* 赤 */
+            --line-color: #06c755;    /* LINEの緑色 */
             --text-color: #333;
             --bg-color: #f9f9f9;
         }
@@ -56,7 +57,7 @@
             margin: 10px auto 0;
         }
 
-        /* --- ボタン --- */
+        /* --- ボタン共通設定 --- */
         .btn {
             display: inline-block;
             background-color: var(--highlight-color);
@@ -68,11 +69,17 @@
             border-radius: 50px;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 10px; /* ボタン同士の間隔 */
         }
 
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* LINEボタンのデザイン */
+        .btn-line {
+            background-color: var(--line-color);
         }
 
         /* --- アニメーション --- */
@@ -289,7 +296,7 @@
             margin: 20px 0;
         }
 
-        /* --- 比較表（PC用スタイル） --- */
+        /* --- 比較表 --- */
         .comparison {
             background-color: #f9f9f9;
         }
@@ -581,16 +588,16 @@
             background-color: #eee;
             text-align: center;
             padding: 20px;
-            padding-bottom: 90px;
+            padding-bottom: 110px; /* LINEボタンと被らないよう少し広めに */
             font-size: 0.9rem;
         }
 
-        /* --- スマホ用・追従ボタン --- */
+        /* --- スマホ用・追従ボタン（2つ並べる） --- */
         .sticky-cta {
             display: none;
         }
 
-        /* --- ▼▼▼ スマホ対応（レスポンシブ） ▼▼▼ --- */
+        /* --- ▼▼▼ スマホ対応 ▼▼▼ --- */
         @media (max-width: 768px) {
             .hero {
                 background-position: 20% center; 
@@ -630,7 +637,7 @@
                 padding: 25px 20px;
             }
 
-            /* --- スマホ用：縦型カード形式の比較表 --- */
+            /* 比較表スマホ化 */
             .compare-table {
                 min-width: auto;
                 background: transparent;
@@ -692,26 +699,30 @@
             
             .point-bubble { font-size: 0.9rem; }
 
-            /* --- スマホ用・追従ボタン --- */
+            /* --- スマホ用追従ボタン：LINEも追加して2段に --- */
             .sticky-cta {
-                display: block;
+                display: flex;
+                flex-direction: column; /* 縦に並べる */
                 position: fixed;
                 bottom: 0;
                 left: 0;
                 width: 100%;
                 background-color: rgba(255, 255, 255, 0.95);
                 border-top: 1px solid #ddd;
-                padding: 15px;
+                padding: 10px;
                 box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
                 z-index: 1000;
                 text-align: center;
                 box-sizing: border-box;
+                gap: 5px; /* ボタン同士の隙間 */
             }
 
             .sticky-cta .btn {
-                width: 90%;
-                padding: 12px 0;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                width: 100%;
+                margin: 0; /* マージンリセット */
+                padding: 10px 0;
+                font-size: 0.9rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
         }
     </style>
@@ -755,7 +766,6 @@
     <section class="problem">
         <div class="container fade-in">
             <h2>こんなお悩みありませんか？</h2>
-            
             <div class="problem-card-box">
                 <ul class="check-list">
                     <li>商談・営業で断られてばかり…</li>
@@ -776,18 +786,14 @@
             <h2>なぜ変われるのか？<br>唯一無二の融合メソッド</h2>
             <div class="method-grid">
                 <div class="method-card">
-                    <div class="method-img-area">
-                        <img src="method-sales.jpg" alt="実演販売の様子">
-                    </div>
+                    <div class="method-img-area"><img src="method-sales.jpg" alt="実演販売"></div>
                     <div class="method-content">
                         <h3>実演販売の「売れる技術」</h3>
                         <p>買う気がない人、興味ゼロの相手にもプレゼンして響感してもらい、「欲しい！」と思わせるプロの技術。</p>
                     </div>
                 </div>
                 <div class="method-card">
-                    <div class="method-img-area">
-                        <img src="method-acting.jpg" alt="演技ワークショップの様子">
-                    </div>
+                    <div class="method-img-area"><img src="method-acting.jpg" alt="演技ワーク"></div>
                     <div class="method-content">
                         <h3>俳優・モデルの「表現力」</h3>
                         <p>オーディションという競争社会で「選ばれる」ための自己表現。相手に伝わる演技メソッド。</p>
@@ -804,12 +810,7 @@
     <section class="comparison">
         <div class="container fade-in" style="text-align: center;">
             <h2>他社と何が違うのか？</h2>
-            
-            <div class="point-bubble">
-                ▶ 実演販売と演技メソッド<br>
-                唯一無二の融合メソッド！
-            </div>
-
+            <div class="point-bubble">▶ 実演販売と演技メソッド<br>唯一無二の融合メソッド！</div>
             <div class="table-scroll">
                 <table class="compare-table">
                     <thead>
@@ -823,55 +824,27 @@
                     <tbody>
                         <tr>
                             <th>売る力</th>
-                            <td class="col-highlight" data-label="学式WorkShop">
-                                <span class="mark mark-good">◎</span>
-                                実演販売技術
-                            </td>
-                            <td data-label="一般営業研修">
-                                <span class="mark">△</span>
-                            </td>
-                            <td data-label="演技ワーク">
-                                <span class="mark mark-bad">×</span>
-                            </td>
+                            <td class="col-highlight" data-label="学式WorkShop"><span class="mark mark-good">◎</span>実演販売技術</td>
+                            <td data-label="一般営業研修"><span class="mark">△</span></td>
+                            <td data-label="演技ワーク"><span class="mark mark-bad">×</span></td>
                         </tr>
                         <tr>
                             <th>表現力</th>
-                            <td class="col-highlight" data-label="学式WorkShop">
-                                <span class="mark mark-good">◎</span>
-                                俳優・モデルメソッド
-                            </td>
-                            <td data-label="一般営業研修">
-                                <span class="mark mark-bad">×</span>
-                            </td>
-                            <td data-label="演技ワーク">
-                                <span class="mark mark-good">◎</span>
-                            </td>
+                            <td class="col-highlight" data-label="学式WorkShop"><span class="mark mark-good">◎</span>俳優・モデルメソッド</td>
+                            <td data-label="一般営業研修"><span class="mark mark-bad">×</span></td>
+                            <td data-label="演技ワーク"><span class="mark mark-good">◎</span></td>
                         </tr>
                         <tr>
                             <th>汎用性</th>
-                            <td class="col-highlight" data-label="学式WorkShop">
-                                <span class="mark mark-good">◎</span>
-                                幅広く活用可能
-                            </td>
-                            <td data-label="一般営業研修">
-                                <span class="mark">△</span>
-                            </td>
-                            <td data-label="演技ワーク">
-                                <span class="mark">△</span>
-                            </td>
+                            <td class="col-highlight" data-label="学式WorkShop"><span class="mark mark-good">◎</span>幅広く活用可能</td>
+                            <td data-label="一般営業研修"><span class="mark">△</span></td>
+                            <td data-label="演技ワーク"><span class="mark">△</span></td>
                         </tr>
                         <tr>
                             <th>実践力</th>
-                            <td class="col-highlight" data-label="学式WorkShop">
-                                <span class="mark mark-good">◎</span>
-                                体験型・即実践
-                            </td>
-                            <td data-label="一般営業研修">
-                                <span class="mark">△</span>
-                            </td>
-                            <td data-label="演技ワーク">
-                                <span class="mark">△</span>
-                            </td>
+                            <td class="col-highlight" data-label="学式WorkShop"><span class="mark mark-good">◎</span>体験型・即実践</td>
+                            <td data-label="一般営業研修"><span class="mark">△</span></td>
+                            <td data-label="演技ワーク"><span class="mark">△</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -884,66 +857,43 @@
             <h2>選べる3つのスタイル</h2>
             <div class="service-grid">
                 <div class="service-card">
-                    <div class="service-img-area">
-                        <img src="service-company.jpg" alt="企業研修の様子">
-                    </div>
+                    <div class="service-img-area"><img src="service-company.jpg" alt="企業研修"></div>
                     <div class="service-content">
                         <h3>企業研修</h3>
                         <p>チームビルディング、離職率改善、営業力強化に。御社の課題に合わせたカスタムメイドの研修を行います。</p>
-                        <div class="service-note">
-                            <span style="color: #ff3300;">●</span> 企業への訪問も可能です<br>
-                            (費用はヒアリングの上、お見積りいたします)
-                        </div>
+                        <div class="service-note"><span style="color: #ff3300;">●</span> 企業への訪問も可能です<br>(費用はヒアリングの上、お見積り)</div>
                     </div>
                 </div>
-                
                 <div class="service-card">
-                    <div class="service-img-area">
-                        <img src="service-workshop.jpg" alt="ワークショップの様子">
-                    </div>
+                    <div class="service-img-area"><img src="service-workshop.jpg" alt="ワークショップ"></div>
                     <div class="service-content">
                         <h3>ワークショップ</h3>
                         <p>定期的に開催されるグループワーク。多様な参加者と共に、楽しみながらコミュニケーション力を磨きます。</p>
-                        <div class="service-note">
-                            一般参加・グループ参加歓迎
-                        </div>
+                        <div class="service-note">一般参加・グループ参加歓迎</div>
                     </div>
                 </div>
-
                 <div class="service-card">
-                    <div class="service-img-area">
-                        <img src="service-personal.jpg" alt="個人レッスンの様子">
-                    </div>
+                    <div class="service-img-area"><img src="service-personal.jpg" alt="個人レッスン"></div>
                     <div class="service-content">
                         <h3>個人レッスン</h3>
                         <p>「オーディションに受かりたい」「大事なプレゼンがある」など、個人の目標に合わせたマンツーマン指導。</p>
-                        <div class="service-note">
-                            オンライン / 対面 対応可能
-                        </div>
+                        <div class="service-note">オンライン / 対面 対応可能</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="instructor">
+    <section class="instructor" id="instructor">
         <div class="container fade-in">
             <h2>講師プロフィール</h2>
             <div class="instructor-profile">
-                <div class="instructor-img">
-                    <img src="profile.jpg" alt="藤本学">
-                </div>
+                <div class="instructor-img"><img src="profile.jpg" alt="藤本学"></div>
                 <div class="instructor-text">
                     <span class="title">俳優・モデル・実演販売士・ワークショップ講師</span>
                     <h3>藤本 学 (Gaku Fujimoto)</h3>
-                    <p>俳優・モデル歴33年、実演販売歴26年。<br>
-                    プレゼン接客数は30万人以上。</p>
-                    <p style="margin-top: 10px; font-size: 0.9rem;">
-                        <strong>主な実績：</strong><br>
-                        TVCM出演100本以上（クレラップ、ヘルシア緑茶、TOYOTAなど）。<br>
-                        実演販売では歯ブラシから車まで販売。<br>
-                        IT企業研修にて離職率0%を達成した実績あり。
-                    </p>
+                    <p>俳優・モデル歴33年、実演販売歴26年。<br>プレゼン接客数は30万人以上。</p>
+                    <p style="margin-top: 10px; font-size: 0.9rem;"><strong>主な実績：</strong><br>TVCM出演100本以上（クレラップ、ヘルシア緑茶、TOYOTAなど）。<br>実演販売では歯ブラシから車まで販売。<br>IT企業研修にて離職率0%を達成した実績あり。</p>
                 </div>
             </div>
         </div>
@@ -952,72 +902,22 @@
     <section class="achievements">
         <div class="container fade-in">
             <h2>参加者の声・実績</h2>
-            
             <div class="voice-grid">
-                <div class="voice-box">
-                    <strong>受注率 2倍！</strong>
-                    <p>展示会での受注率が以前の2倍になりました。（営業職）</p>
-                </div>
-                <div class="voice-box">
-                    <strong>離職率 0%</strong>
-                    <p>IT企業での導入後、離職率0%を達成し、チームワークが向上。</p>
-                </div>
-                <div class="voice-box">
-                    <strong>就職・合格</strong>
-                    <p>希望の会社に就職できた。オーディションに受かるようになった。</p>
-                </div>
-                <div class="voice-box">
-                    <strong>自信がついた</strong>
-                    <p>自分の在り方がわかり、笑顔が自然に出るようになった。</p>
-                </div>
+                <div class="voice-box"><strong>受注率 2倍！</strong><p>展示会での受注率が以前の2倍になりました。（営業職）</p></div>
+                <div class="voice-box"><strong>離職率 0%</strong><p>IT企業での導入後、離職率0%を達成し、チームワークが向上。</p></div>
+                <div class="voice-box"><strong>就職・合格</strong><p>希望の会社に就職できた。オーディションに受かるようになった。</p></div>
+                <div class="voice-box"><strong>自信がついた</strong><p>自分の在り方がわかり、笑顔が自然に出るようになった。</p></div>
             </div>
         </div>
     </section>
 
-    <section class="faq">
+    <section class="faq" id="faq">
         <div class="container fade-in">
             <h2>よくある質問 (Q&A)</h2>
-            
-            <div class="faq-item">
-                <details>
-                    <summary class="faq-question"><span class="faq-q-mark">Q.</span>演技や演劇の経験がなくても参加できますか？</summary>
-                    <div class="faq-answer">
-                        はい、もちろんです！<br>
-                        ほとんどの方が演技未経験からスタートしています。俳優メソッドを使いますが、あくまで「コミュニケーション・表現力」の向上を目的としているため、楽しく安心してご参加いただけます。
-                    </div>
-                </details>
-            </div>
-
-            <div class="faq-item">
-                <details>
-                    <summary class="faq-question"><span class="faq-q-mark">Q.</span>企業研修のカリキュラムはカスタマイズできますか？</summary>
-                    <div class="faq-answer">
-                        はい、可能です。<br>
-                        「営業力強化」「チームビルディング」「離職率低下」など、御社の課題や目的に合わせて最適なプログラムをご提案させていただきます。お気軽にご相談ください。
-                    </div>
-                </details>
-            </div>
-
-            <div class="faq-item">
-                <details>
-                    <summary class="faq-question"><span class="faq-q-mark">Q.</span>オンラインでの受講は可能ですか？</summary>
-                    <div class="faq-answer">
-                        「個人レッスン」はオンライン（Zoom等）でも対応可能です。<br>
-                        「ワークショップ」や「企業研修」につきましては、身体を使った実践ワークの効果を最大化するため、基本的には対面での実施を推奨しておりますが、ご状況に合わせて柔軟に対応いたします。
-                    </div>
-                </details>
-            </div>
-
-            <div class="faq-item">
-                <details>
-                    <summary class="faq-question"><span class="faq-q-mark">Q.</span>支払い方法や見積もりについて教えてください。</summary>
-                    <div class="faq-answer">
-                        企業研修の場合は、ヒアリング後に御見積書を作成いたします。<br>
-                        ワークショップや個人レッスンのお支払いにつきましては、お問い合わせ後に詳細をご案内させていただきます。
-                    </div>
-                </details>
-            </div>
-
+            <div class="faq-item"><details><summary class="faq-question"><span class="faq-q-mark">Q.</span>演技や演劇の経験がなくても参加できますか？</summary><div class="faq-answer">はい、もちろんです！<br>ほとんどの方が演技未経験からスタートしています。俳優メソッドを使いますが、あくまで「コミュニケーション・表現力」の向上を目的としているため、楽しく安心してご参加いただけます。</div></details></div>
+            <div class="faq-item"><details><summary class="faq-question"><span class="faq-q-mark">Q.</span>企業研修のカリキュラムはカスタマイズできますか？</summary><div class="faq-answer">はい、可能です。<br>「営業力強化」「チームビルディング」「離職率低下」など、御社の課題や目的に合わせて最適なプログラムをご提案させていただきます。お気軽にご相談ください。</div></details></div>
+            <div class="faq-item"><details><summary class="faq-question"><span class="faq-q-mark">Q.</span>オンラインでの受講は可能ですか？</summary><div class="faq-answer">「個人レッスン」はオンライン（Zoom等）でも対応可能です。<br>「ワークショップ」や「企業研修」につきましては、身体を使った実践ワークの効果を最大化するため、基本的には対面での実施を推奨しておりますが、ご状況に合わせて柔軟に対応いたします。</div></details></div>
+            <div class="faq-item"><details><summary class="faq-question"><span class="faq-q-mark">Q.</span>支払い方法や見積もりについて教えてください。</summary><div class="faq-answer">企業研修の場合は、ヒアリング後に御見積書を作成いたします。<br>ワークショップや個人レッスンのお支払いにつきましては、お問い合わせ後に詳細をご案内させていただきます。</div></details></div>
         </div>
     </section>
 
@@ -1026,7 +926,9 @@
             <h2>人生を変えるワークショップを体験しよう</h2>
             <p>企業研修、個人レッスン、ワークショップ開催のご依頼はこちらから</p>
             <br>
-            <a href="https://forms.gle/nAFGfcQ1vb5Wm2PD7" target="_blank" class="btn">お問い合わせ・お申し込み</a>
+            <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="btn btn-line">LINEで質問・相談する</a>
+            <br>
+            <a href="https://forms.gle/nAFGfcQ1vb5Wm2PD7" target="_blank" class="btn">お申し込みフォームへ</a>
         </div>
     </section>
 
@@ -1037,6 +939,7 @@
     </footer>
 
     <div class="sticky-cta">
+        <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="btn btn-line">LINEで質問・相談する</a>
         <a href="https://forms.gle/nAFGfcQ1vb5Wm2PD7" target="_blank" class="btn">お問い合わせ・お申し込み</a>
     </div>
 
@@ -1049,7 +952,6 @@
                     }
                 });
             }, { threshold: 0.1 }); 
-
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
     </script>
