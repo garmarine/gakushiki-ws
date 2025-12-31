@@ -85,7 +85,7 @@
             height: 70px;
         }
 
-        /* --- ロゴデザイン調整 --- */
+        /* --- ロゴデザイン（GAKUを上に乗せる設定） --- */
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
@@ -100,7 +100,7 @@
         .gaku-wrapper {
             display: inline-block;
             position: relative;
-            margin-right: 0; /* 隙間をなくすため0に */
+            margin-right: 0; /* 隙間をなくす */
         }
 
         /* 上に乗る「GAKU」：サイズ調整 */
@@ -110,11 +110,11 @@
             left: 50%;
             transform: translateX(-50%);
             
-            font-size: 0.3em; /* 0.4emから縮小して「学」の幅に収める */
+            font-size: 0.3em; /* 学の幅に収まるよう小さく */
             color: var(--highlight-color);
             font-weight: bold;
             font-family: Arial, sans-serif;
-            letter-spacing: 0; /* 文字間隔もなくしてコンパクトに */
+            letter-spacing: 0; /* 文字間隔を詰める */
             white-space: nowrap;
             width: 100%;
             text-align: center;
@@ -224,9 +224,88 @@
             margin: 20px 0;
         }
 
-        /* --- サービスメニュー --- */
-        .service {
+        /* --- 比較表セクション（新規追加） --- */
+        .comparison {
             background-color: white;
+        }
+
+        .point-bubble {
+            background-color: #003366; /* 濃い青 */
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 5px;
+            position: relative;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .point-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #003366 transparent transparent transparent;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .compare-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-spacing: 0;
+            font-size: 1rem;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .compare-table th {
+            background-color: #eee;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .col-highlight {
+            background-color: #fffde7;
+            color: #000;
+            font-weight: bold;
+            border: 2px solid var(--accent-color) !important;
+            position: relative;
+        }
+
+        .compare-table th.col-highlight {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .mark {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .mark-good { color: var(--highlight-color); }
+        .mark-bad { color: #aaa; }
+
+
+        /* --- サービスメニュー（3分割） --- */
+        .service {
+            background-color: #f9f9f9;
         }
         
         .service-grid {
@@ -282,7 +361,7 @@
 
         /* --- 講師紹介 --- */
         .instructor {
-            background-color: #f9f9f9;
+            background-color: white;
         }
 
         .instructor-profile {
@@ -392,6 +471,14 @@
                 width: 200px;
                 height: 200px;
             }
+
+            /* 比較表の調整 */
+            .compare-table {
+                min-width: 600px;
+            }
+            .point-bubble {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -406,7 +493,7 @@
                             <span class="gaku-ruby-text">GAKU</span>
                             <span class="gaku-kanji">学</span></span>式 WorkShop!!
                     </span>
-                    </div>
+                </div>
                 <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">お問い合わせ</a>
             </nav>
         </div>
@@ -422,7 +509,7 @@
                         <span class="gaku-ruby-text">GAKU</span>
                         <span class="gaku-kanji" style="color: #222;">学</span></span>式 WorkShop!!
                 </span>
-                </h1>
+            </h1>
 
             <p>実演販売の「売れる技術」× 俳優・モデルの「表現力」<br>
             人間力と成果が劇的にアップする、唯一無二の実践型ワークショップ</p>
@@ -463,6 +550,84 @@
             <p style="text-align: center;">
                 座学だけではありません。「体験型・即実践」のワークで、身体と感情を使って楽しく習得します。
             </p>
+        </div>
+    </section>
+
+    <section class="comparison">
+        <div class="container" style="text-align: center;">
+            <h2>他社と何が違うのか？</h2>
+            
+            <div class="point-bubble">
+                ▶ 実演販売と演技メソッド<br>
+                唯一無二の融合メソッド！
+            </div>
+
+            <div class="table-scroll">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">比較項目</th>
+                            <th class="col-highlight" style="width: 35%;">学式WorkShop</th>
+                            <th style="width: 25%;">一般営業研修</th>
+                            <th style="width: 25%;">演技ワーク</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>売る力</th>
+                            <td class="col-highlight">
+                                <span class="mark mark-good">◎</span>
+                                実演販売技術
+                            </td>
+                            <td>
+                                <span class="mark">△</span>
+                            </td>
+                            <td>
+                                <span class="mark mark-bad">×</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>表現力</th>
+                            <td class="col-highlight">
+                                <span class="mark mark-good">◎</span>
+                                俳優・モデルメソッド
+                            </td>
+                            <td>
+                                <span class="mark mark-bad">×</span>
+                            </td>
+                            <td>
+                                <span class="mark mark-good">◎</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>汎用性</th>
+                            <td class="col-highlight">
+                                <span class="mark mark-good">◎</span>
+                                幅広く活用可能
+                            </td>
+                            <td>
+                                <span class="mark">△</span>
+                            </td>
+                            <td>
+                                <span class="mark">△</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>実践力</th>
+                            <td class="col-highlight">
+                                <span class="mark mark-good">◎</span>
+                                体験型・即実践
+                            </td>
+                            <td>
+                                <span class="mark">△</span>
+                            </td>
+                            <td>
+                                <span class="mark">△</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
