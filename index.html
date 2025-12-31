@@ -170,9 +170,9 @@
             color: #444;
         }
 
-        /* --- お悩みセクション（カードデザイン化） --- */
+        /* --- お悩みセクション（カードデザイン） --- */
         .problem {
-            background-color: #f0f4f8; /* 背景を少しグレーにしてカードを目立たせる */
+            background-color: #f0f4f8;
         }
 
         .problem-card-box {
@@ -182,11 +182,10 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             max-width: 800px;
             margin: 0 auto;
-            border: 2px solid #fff; /* 白枠で清潔感 */
+            border: 2px solid #fff;
             position: relative;
         }
         
-        /* 診断シートのようなアクセント線 */
         .problem-card-box::before {
             content: "";
             position: absolute;
@@ -210,7 +209,7 @@
             margin-bottom: 15px;
             padding-left: 35px;
             position: relative;
-            border-bottom: 1px dashed #eee; /* ノートの罫線のような演出 */
+            border-bottom: 1px dashed #eee;
             padding-bottom: 10px;
         }
 
@@ -467,7 +466,7 @@
             color: #666;
             flex-shrink: 0;
             overflow: hidden;
-            border: 5px solid white; /* 白枠で写真を強調 */
+            border: 5px solid white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
@@ -521,16 +520,70 @@
             margin-bottom: 10px;
         }
 
+        /* --- ▼▼▼ 新規追加：Q&Aセクション ▼▼▼ --- */
+        .faq {
+            background-color: #fff;
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: #f9f9f9;
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            padding-right: 40px;
+            list-style: none; /* デフォルトの三角を消す */
+        }
+        
+        /* アコーディオンのアイコン（＋/－） */
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        details[open] .faq-question::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            padding: 20px;
+            background-color: white;
+            border-top: 1px solid #eee;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        /* 質問の頭にQをつける */
+        .faq-q-mark {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+
         /* --- フッター --- */
         footer {
             background-color: #eee;
             text-align: center;
             padding: 20px;
-            padding-bottom: 90px; /* スマホ用固定ボタンに被らないよう余白 */
+            padding-bottom: 90px;
             font-size: 0.9rem;
         }
 
-        /* --- スマホ用・追従ボタン（PCでは非表示） --- */
+        /* --- スマホ用・追従ボタン --- */
         .sticky-cta {
             display: none;
         }
@@ -538,7 +591,6 @@
         /* --- ▼▼▼ スマホ対応 ▼▼▼ --- */
         @media (max-width: 768px) {
             .hero {
-                /* スマホでは左側(20%)を中心 */
                 background-position: 20% center; 
             }
 
@@ -570,7 +622,6 @@
                 height: 200px;
             }
 
-            /* お悩みカードのスマホ調整 */
             .problem-card-box {
                 padding: 25px 20px;
             }
@@ -600,11 +651,11 @@
                 box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
                 z-index: 1000;
                 text-align: center;
-                box-sizing: border-box; /* パディングを含める */
+                box-sizing: border-box;
             }
 
             .sticky-cta .btn {
-                width: 90%; /* ボタン幅を画面いっぱいに */
+                width: 90%;
                 padding: 12px 0;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             }
@@ -875,6 +926,53 @@
         </div>
     </section>
 
+    <section class="faq">
+        <div class="container fade-in">
+            <h2>よくある質問 (Q&A)</h2>
+            
+            <div class="faq-item">
+                <details>
+                    <summary class="faq-question"><span class="faq-q-mark">Q.</span>演技や演劇の経験がなくても参加できますか？</summary>
+                    <div class="faq-answer">
+                        はい、もちろんです！<br>
+                        ほとんどの方が演技未経験からスタートしています。俳優メソッドを使いますが、あくまで「コミュニケーション・表現力」の向上を目的としているため、楽しく安心してご参加いただけます。
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-item">
+                <details>
+                    <summary class="faq-question"><span class="faq-q-mark">Q.</span>企業研修のカリキュラムはカスタマイズできますか？</summary>
+                    <div class="faq-answer">
+                        はい、可能です。<br>
+                        「営業力強化」「チームビルディング」「離職率低下」など、御社の課題や目的に合わせて最適なプログラムをご提案させていただきます。お気軽にご相談ください。
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-item">
+                <details>
+                    <summary class="faq-question"><span class="faq-q-mark">Q.</span>オンラインでの受講は可能ですか？</summary>
+                    <div class="faq-answer">
+                        「個人レッスン」はオンライン（Zoom等）でも対応可能です。<br>
+                        「ワークショップ」や「企業研修」につきましては、身体を使った実践ワークの効果を最大化するため、基本的には対面での実施を推奨しておりますが、ご状況に合わせて柔軟に対応いたします。
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-item">
+                <details>
+                    <summary class="faq-question"><span class="faq-q-mark">Q.</span>支払い方法や見積もりについて教えてください。</summary>
+                    <div class="faq-answer">
+                        企業研修の場合は、ヒアリング後に御見積書を作成いたします。<br>
+                        ワークショップや個人レッスンのお支払いにつきましては、お問い合わせ後に詳細をご案内させていただきます。
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </section>
+
     <section id="contact" style="text-align: center; padding: 100px 0;">
         <div class="container fade-in">
             <h2>人生を変えるワークショップを体験しよう</h2>
@@ -902,7 +1000,7 @@
                         entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.1 }); // 10%見えたら発火
+            }, { threshold: 0.1 }); 
 
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         });
