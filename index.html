@@ -85,36 +85,43 @@
             height: 70px;
         }
 
-        /* --- ロゴデザイン（GAKUを上に乗せる設定） --- */
+        /* --- ロゴデザイン（修正版：絶対配置でズレを防止） --- */
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary-color);
         }
 
+        /* 文字グループの設定：以前のFlexboxを解除し、自然なテキスト配置へ */
         .logo-text-group {
-            display: inline-flex;
-            align-items: flex-end; /* 下のラインを揃える */
+            display: inline-block; 
         }
 
+        /* 「学」を包む枠 */
         .gaku-wrapper {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            line-height: 1;
+            display: inline-block;
+            position: relative; /* ここを基準にGAKUを配置 */
             margin-right: 2px;
-            vertical-align: bottom;
         }
 
+        /* 上に乗る「GAKU」：絶対配置で浮かせる */
         .gaku-ruby-text {
-            font-size: 0.4em; /* 漢字に対して40%のサイズ */
+            position: absolute;
+            top: -0.6em; /* 文字の上に配置（フォントサイズに合わせて調整可） */
+            left: 50%;
+            transform: translateX(-50%); /* 左右中央揃え */
+            
+            font-size: 0.4em;
             color: var(--highlight-color);
             font-weight: bold;
             font-family: Arial, sans-serif;
-            margin-bottom: -2px; /* 漢字との距離を縮める */
             letter-spacing: 0.05em;
+            white-space: nowrap; /* 改行させない */
+            width: 100%;
+            text-align: center;
         }
 
+        /* 下の「学」 */
         .gaku-kanji {
             font-size: 1em;
             /* 色は親要素に従う */
@@ -134,10 +141,11 @@
             margin-bottom: 25px;
             text-shadow: 0 2px 4px rgba(255,255,255,0.8);
             color: #222;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            line-height: 1.2;
+            line-height: 1.4; /* 行間を少し広げて、上のGAKUが切れないように */
+            
+            /* Flexboxを解除し、テキストとして中央揃え */
+            display: block; 
+            text-align: center;
         }
 
         .hero .sub-copy {
@@ -362,7 +370,8 @@
         @media (max-width: 768px) {
             .hero h1 { 
                 font-size: 2.2rem;
-                flex-wrap: wrap; 
+                /* スマホでは行間をさらに広げて見やすく */
+                line-height: 1.6;
             }
             .hero .sub-copy { 
                 font-size: 1.1rem; 
@@ -399,13 +408,13 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <div class="logo-text-group">
-                        <div class="gaku-wrapper">
+                    <span class="logo-text-group">
+                        <span class="gaku-wrapper">
                             <span class="gaku-ruby-text">GAKU</span>
                             <span class="gaku-kanji">学</span>
-                        </div>
+                        </span>
                         式 WorkShop!!
-                    </div>
+                    </span>
                 </div>
                 <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">お問い合わせ</a>
             </nav>
@@ -417,13 +426,13 @@
             <div class="sub-copy">「売れる・話せる・伝わる」が手に入る！</div>
             
             <h1>
-                <div class="logo-text-group">
-                    <div class="gaku-wrapper">
+                <span class="logo-text-group">
+                    <span class="gaku-wrapper">
                         <span class="gaku-ruby-text">GAKU</span>
                         <span class="gaku-kanji" style="color: #222;">学</span> 
-                    </div>
+                    </span>
                     式 WorkShop!!
-                </div>
+                </span>
             </h1>
 
             <p>実演販売の「売れる技術」× 俳優・モデルの「表現力」<br>
