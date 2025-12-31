@@ -15,7 +15,7 @@
         }
 
         html {
-            scroll-behavior: smooth; /* ページ内リンクでスルスル動く設定 */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -25,7 +25,7 @@
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
-            overflow-x: hidden; /* 横揺れ防止 */
+            overflow-x: hidden;
         }
 
         /* --- レイアウト共通 --- */
@@ -75,7 +75,7 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
 
-        /* --- アニメーション（ふわっと表示） --- */
+        /* --- アニメーション --- */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -139,7 +139,7 @@
         .hero {
             background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.7)), url('main.jpg');
             background-size: cover;
-            background-position: center; /* PCでは中央 */
+            background-position: center;
             text-align: center;
             padding: 120px 0;
         }
@@ -174,7 +174,7 @@
             color: #444;
         }
 
-        /* --- お悩みセクション（カードデザイン） --- */
+        /* --- お悩みセクション --- */
         .problem {
             background-color: #f0f4f8;
         }
@@ -493,7 +493,7 @@
             margin-bottom: 10px;
         }
 
-        /* --- 実績・声 --- */
+        /* --- 実績・声（修正箇所：2列2行のグリッド設定） --- */
         .achievements {
             background-color: #333;
             color: white;
@@ -506,20 +506,28 @@
 
         .voice-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr); /* PCでは2列固定 */
+            gap: 30px; /* 隙間を適度に */
+            max-width: 800px; /* 横長になりすぎないよう幅制限 */
+            margin: 0 auto; /* 中央配置 */
         }
 
         .voice-box {
             background: rgba(255,255,255,0.1);
-            padding: 20px;
+            padding: 30px; /* 余白を少し広げてリッチに */
             border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .voice-box:hover {
+             background: rgba(255,255,255,0.15);
+             transform: translateY(-3px);
         }
 
         .voice-box strong {
             display: block;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--accent-color);
             margin-bottom: 10px;
         }
@@ -544,7 +552,7 @@
             cursor: pointer;
             position: relative;
             padding-right: 40px;
-            list-style: none; /* デフォルトの三角を消す */
+            list-style: none; 
         }
         
         .faq-question::after {
@@ -590,7 +598,7 @@
             display: none;
         }
 
-        /* --- ▼▼▼ スマホ対応 ▼▼▼ --- */
+        /* --- ▼▼▼ スマホ対応（レスポンシブ） ▼▼▼ --- */
         @media (max-width: 768px) {
             .hero {
                 background-position: 20% center; 
@@ -610,8 +618,10 @@
                 font-size: 1rem;
             }
 
+            /* グリッドを1列に */
             .method-grid, 
-            .service-grid {
+            .service-grid,
+            .voice-grid { /* 実績セクションもスマホでは1列 */
                 grid-template-columns: 1fr;
             }
             
@@ -907,6 +917,7 @@
     <section class="achievements">
         <div class="container fade-in">
             <h2>参加者の声・実績</h2>
+            
             <div class="voice-grid">
                 <div class="voice-box">
                     <strong>受注率 2倍！</strong>
