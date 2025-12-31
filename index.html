@@ -21,6 +21,7 @@
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
+            overflow-x: hidden; /* 横揺れ防止 */
         }
 
         /* --- レイアウト共通 --- */
@@ -51,6 +52,7 @@
             margin: 10px auto 0;
         }
 
+        /* --- ボタン --- */
         .btn {
             display: inline-block;
             background-color: var(--highlight-color);
@@ -67,6 +69,18 @@
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* --- アニメーション（ふわっと表示） --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* --- ヘッダー --- */
@@ -156,9 +170,32 @@
             color: #444;
         }
 
-        /* --- お悩みセクション --- */
+        /* --- お悩みセクション（カードデザイン化） --- */
         .problem {
-            background-color: white;
+            background-color: #f0f4f8; /* 背景を少しグレーにしてカードを目立たせる */
+        }
+
+        .problem-card-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid #fff; /* 白枠で清潔感 */
+            position: relative;
+        }
+        
+        /* 診断シートのようなアクセント線 */
+        .problem-card-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: repeating-linear-gradient(45deg, var(--primary-color), var(--primary-color) 10px, white 10px, white 20px);
+            border-radius: 15px 15px 0 0;
         }
 
         .check-list {
@@ -171,21 +208,35 @@
         .check-list li {
             font-size: 1.2rem;
             margin-bottom: 15px;
-            padding-left: 30px;
+            padding-left: 35px;
             position: relative;
+            border-bottom: 1px dashed #eee; /* ノートの罫線のような演出 */
+            padding-bottom: 10px;
+        }
+
+        .check-list li:last-child {
+            border-bottom: none;
         }
 
         .check-list li::before {
             content: "✔";
-            color: var(--primary-color);
+            color: white;
+            background-color: var(--primary-color);
             font-weight: bold;
             position: absolute;
             left: 0;
+            top: 2px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 24px;
         }
 
         /* --- 強み（メソッド）セクション --- */
         .method {
-            background-color: #f0f8ff;
+            background-color: #fff;
         }
 
         .method-grid {
@@ -199,8 +250,9 @@
             background: white;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             overflow: hidden;
+            border: 1px solid #eee;
         }
 
         .method-img-area {
@@ -236,7 +288,7 @@
 
         /* --- 比較表セクション --- */
         .comparison {
-            background-color: white;
+            background-color: #f9f9f9;
         }
 
         .point-bubble {
@@ -275,6 +327,7 @@
             border-collapse: collapse;
             border-spacing: 0;
             font-size: 1rem;
+            background: white;
         }
 
         .compare-table th,
@@ -312,14 +365,11 @@
         .mark-good { color: var(--highlight-color); }
         .mark-bad { color: #aaa; }
 
-        /* スクロールヒント（PCでは非表示） */
-        .scroll-hint {
-            display: none;
-        }
+        .scroll-hint { display: none; }
 
         /* --- サービスメニュー --- */
         .service {
-            background-color: #f9f9f9;
+            background-color: white;
         }
         
         .service-grid {
@@ -330,7 +380,7 @@
         }
 
         .service-card {
-            border: 2px solid #eee;
+            border: 1px solid #eee;
             border-radius: 15px;
             overflow: hidden;
             text-align: center;
@@ -339,6 +389,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
 
         .service-img-area {
@@ -396,7 +447,7 @@
 
         /* --- 講師紹介 --- */
         .instructor {
-            background-color: white;
+            background-color: #f9f9f9;
         }
 
         .instructor-profile {
@@ -416,6 +467,8 @@
             color: #666;
             flex-shrink: 0;
             overflow: hidden;
+            border: 5px solid white; /* 白枠で写真を強調 */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .instructor-img img {
@@ -473,13 +526,19 @@
             background-color: #eee;
             text-align: center;
             padding: 20px;
+            padding-bottom: 90px; /* スマホ用固定ボタンに被らないよう余白 */
             font-size: 0.9rem;
         }
 
-        /* --- ▼▼▼ スマホ対応（修正版） ▼▼▼ --- */
+        /* --- スマホ用・追従ボタン（PCでは非表示） --- */
+        .sticky-cta {
+            display: none;
+        }
+
+        /* --- ▼▼▼ スマホ対応 ▼▼▼ --- */
         @media (max-width: 768px) {
             .hero {
-                /* 【修正点】スマホでは写真の「左側(20%)」を中心に表示する（人物が見切れないように） */
+                /* スマホでは左側(20%)を中心 */
                 background-position: 20% center; 
             }
 
@@ -491,15 +550,12 @@
                 font-size: 1rem; 
                 padding: 5px 15px;
             }
-            .hero p {
-                font-size: 1rem;
-            }
+            .hero p { font-size: 1rem; }
             .btn {
                 padding: 12px 30px;
                 font-size: 1rem;
             }
 
-            /* グリッドを縦並びに */
             .method-grid, 
             .service-grid {
                 grid-template-columns: 1fr;
@@ -514,22 +570,43 @@
                 height: 200px;
             }
 
-            /* 比較表のスクロール対応 */
-            .compare-table {
-                min-width: 600px;
-            }
-            .point-bubble {
-                font-size: 0.9rem;
+            /* お悩みカードのスマホ調整 */
+            .problem-card-box {
+                padding: 25px 20px;
             }
 
-            /* 【修正点】スマホ用スクロール案内を表示 */
+            .compare-table { min-width: 600px; }
+            .point-bubble { font-size: 0.9rem; }
+
             .scroll-hint {
                 display: block !important;
                 text-align: right;
                 font-size: 0.8rem;
                 color: var(--primary-color);
                 margin-bottom: 5px;
-                animation: blink 2s infinite; /* 点滅アニメーション */
+                animation: blink 2s infinite;
+            }
+
+            /* --- スマホ用・追従ボタンの表示設定 --- */
+            .sticky-cta {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.95);
+                border-top: 1px solid #ddd;
+                padding: 15px;
+                box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+                text-align: center;
+                box-sizing: border-box; /* パディングを含める */
+            }
+
+            .sticky-cta .btn {
+                width: 90%; /* ボタン幅を画面いっぱいに */
+                padding: 12px 0;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             }
         }
 
@@ -558,7 +635,7 @@
     </header>
 
     <section class="hero">
-        <div class="container">
+        <div class="container fade-in">
             <div class="sub-copy">「売れる・話せる・伝わる」が手に入る！</div>
             
             <h1>
@@ -576,23 +653,26 @@
     </section>
 
     <section class="problem">
-        <div class="container">
+        <div class="container fade-in">
             <h2>こんなお悩みありませんか？</h2>
-            <ul class="check-list">
-                <li>商談・営業で断られてばかり…</li>
-                <li>プレゼンで緊張して言いたいことが言えない</li>
-                <li>「話が長い・伝わらない」と言われる</li>
-                <li>チームメンバーとの会話が噛み合わない</li>
-                <li>自分に自信がなく、前に出られない</li>
-            </ul>
-            <p style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 1.2rem;">
-                それ、全部「学式 WorkShop!!」で変わります！
-            </p>
+            
+            <div class="problem-card-box">
+                <ul class="check-list">
+                    <li>商談・営業で断られてばかり…</li>
+                    <li>プレゼンで緊張して言いたいことが言えない</li>
+                    <li>「話が長い・伝わらない」と言われる</li>
+                    <li>チームメンバーとの会話が噛み合わない</li>
+                    <li>自分に自信がなく、前に出られない</li>
+                </ul>
+                <p style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 1.2rem; color: var(--primary-color);">
+                    それ、全部「学式 WorkShop!!」で変わります！
+                </p>
+            </div>
         </div>
     </section>
 
     <section class="method">
-        <div class="container">
+        <div class="container fade-in">
             <h2>なぜ変われるのか？<br>唯一無二の融合メソッド</h2>
             <div class="method-grid">
                 <div class="method-card">
@@ -615,14 +695,14 @@
                 </div>
             </div>
             <div class="plus-icon">×</div>
-            <p style="text-align: center;">
+            <p style="text-align: center; margin-top: 20px;">
                 座学だけではありません。「体験型・即実践」のワークで、身体と感情を使って楽しく習得します。
             </p>
         </div>
     </section>
 
     <section class="comparison">
-        <div class="container" style="text-align: center;">
+        <div class="container fade-in" style="text-align: center;">
             <h2>他社と何が違うのか？</h2>
             
             <div class="point-bubble">
@@ -702,7 +782,7 @@
     </section>
 
     <section class="service">
-        <div class="container">
+        <div class="container fade-in">
             <h2>選べる3つのスタイル</h2>
             <div class="service-grid">
                 <div class="service-card">
@@ -749,7 +829,7 @@
     </section>
 
     <section class="instructor">
-        <div class="container">
+        <div class="container fade-in">
             <h2>講師プロフィール</h2>
             <div class="instructor-profile">
                 <div class="instructor-img">
@@ -772,7 +852,7 @@
     </section>
 
     <section class="achievements">
-        <div class="container">
+        <div class="container fade-in">
             <h2>参加者の声・実績</h2>
             <div class="voice-grid">
                 <div class="voice-box">
@@ -796,7 +876,7 @@
     </section>
 
     <section id="contact" style="text-align: center; padding: 100px 0;">
-        <div class="container">
+        <div class="container fade-in">
             <h2>人生を変えるワークショップを体験しよう</h2>
             <p>企業研修、個人レッスン、ワークショップ開催のご依頼はこちらから</p>
             <br>
@@ -809,6 +889,24 @@
             <p>&copy; 2025 学式WorkShop (Gaku Fujimoto). All Rights Reserved.</p>
         </div>
     </footer>
+
+    <div class="sticky-cta">
+        <a href="#contact" class="btn">お問い合わせ・お申し込み</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 }); // 10%見えたら発火
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
 
 </body>
 </html>
