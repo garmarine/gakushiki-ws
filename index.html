@@ -7,9 +7,9 @@
     <style>
         /* --- 基本設定 --- */
         :root {
-            --primary-color: #0066cc; /* 青：信頼・ブランドカラー */
-            --accent-color: #ffcc00;  /* 黄：元気・アクセント */
-            --highlight-color: #ff3300; /* 赤：強調・GAKUの文字 */
+            --primary-color: #0066cc; /* 青 */
+            --accent-color: #ffcc00;  /* 黄 */
+            --highlight-color: #ff3300; /* 赤 */
             --text-color: #333;
             --bg-color: #f9f9f9;
         }
@@ -103,7 +103,7 @@
             height: 70px;
         }
 
-        /* --- ロゴデザイン --- */
+        /* --- ロゴ --- */
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
@@ -237,7 +237,7 @@
             line-height: 24px;
         }
 
-        /* --- 強み（メソッド）セクション --- */
+        /* --- メソッド --- */
         .method {
             background-color: #fff;
         }
@@ -289,7 +289,7 @@
             margin: 20px 0;
         }
 
-        /* --- 比較表セクション --- */
+        /* --- 比較表（PC用スタイル） --- */
         .comparison {
             background-color: #f9f9f9;
         }
@@ -316,11 +316,6 @@
             border-width: 10px 10px 0;
             border-style: solid;
             border-color: #003366 transparent transparent transparent;
-        }
-
-        .table-scroll {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
         }
 
         .compare-table {
@@ -367,8 +362,6 @@
         }
         .mark-good { color: var(--highlight-color); }
         .mark-bad { color: #aaa; }
-
-        .scroll-hint { display: none; }
 
         /* --- サービスメニュー --- */
         .service {
@@ -493,7 +486,7 @@
             margin-bottom: 10px;
         }
 
-        /* --- 実績・声（修正箇所：2列2行のグリッド設定） --- */
+        /* --- 実績・声 --- */
         .achievements {
             background-color: #333;
             color: white;
@@ -506,15 +499,15 @@
 
         .voice-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* PCでは2列固定 */
-            gap: 30px; /* 隙間を適度に */
-            max-width: 800px; /* 横長になりすぎないよう幅制限 */
-            margin: 0 auto; /* 中央配置 */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .voice-box {
             background: rgba(255,255,255,0.1);
-            padding: 30px; /* 余白を少し広げてリッチに */
+            padding: 30px;
             border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.2);
             transition: transform 0.3s;
@@ -532,7 +525,7 @@
             margin-bottom: 10px;
         }
 
-        /* --- Q&Aセクション --- */
+        /* --- Q&A --- */
         .faq {
             background-color: #fff;
         }
@@ -583,7 +576,6 @@
             font-size: 1.2rem;
         }
 
-
         /* --- フッター --- */
         footer {
             background-color: #eee;
@@ -618,10 +610,10 @@
                 font-size: 1rem;
             }
 
-            /* グリッドを1列に */
+            /* グリッド1列化 */
             .method-grid, 
             .service-grid,
-            .voice-grid { /* 実績セクションもスマホでは1列 */
+            .voice-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -638,18 +630,75 @@
                 padding: 25px 20px;
             }
 
-            .compare-table { min-width: 600px; }
-            .point-bubble { font-size: 0.9rem; }
-
-            .scroll-hint {
-                display: block !important;
+            /* --- ▼▼▼ 【修正】スマホ用：縦型カード形式の比較表 ▼▼▼ --- */
+            .compare-table {
+                min-width: auto; /* 幅制限解除 */
+                background: transparent;
+            }
+            
+            /* ヘッダー行を非表示 */
+            .compare-table thead {
+                display: none;
+            }
+            
+            /* 行をカード化 */
+            .compare-table tr {
+                display: block;
+                margin-bottom: 25px;
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                background: #fff;
+                overflow: hidden;
+            }
+            
+            /* 1列目（項目名）をカードのタイトルにする */
+            .compare-table th {
+                display: block;
+                width: 100%;
+                background-color: #003366; /* 濃い青で見出し感 */
+                color: white;
+                text-align: center;
+                padding: 10px;
+                font-size: 1.1rem;
+                border-bottom: none;
+            }
+            
+            /* セルをリスト表示に */
+            .compare-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 text-align: right;
-                font-size: 0.8rem;
-                color: var(--primary-color);
-                margin-bottom: 5px;
-                animation: blink 2s infinite;
+                border: none;
+                border-bottom: 1px solid #eee;
+                padding: 12px 15px;
+                font-size: 0.95rem;
             }
 
+            .compare-table td:last-child {
+                border-bottom: none;
+            }
+            
+            /* 学式の行を目立たせる */
+            .compare-table td.col-highlight {
+                background-color: #fffde7; /* 薄い黄色 */
+                border: 2px solid var(--accent-color) !important;
+                border-radius: 5px;
+                margin: 5px 10px; /* カード内で少し浮かせる */
+                width: auto;
+            }
+            
+            /* data-labelを使って項目名を表示 */
+            .compare-table td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #555;
+                font-size: 0.9rem;
+            }
+            
+            .point-bubble { font-size: 0.9rem; }
+
+            /* --- スマホ用・追従ボタン --- */
             .sticky-cta {
                 display: block;
                 position: fixed;
@@ -670,12 +719,6 @@
                 padding: 12px 0;
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             }
-        }
-
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -773,8 +816,6 @@
                 唯一無二の融合メソッド！
             </div>
 
-            <p class="scroll-hint">👉 右へスクロールして詳細を見る</p>
-
             <div class="table-scroll">
                 <table class="compare-table">
                     <thead>
@@ -788,53 +829,53 @@
                     <tbody>
                         <tr>
                             <th>売る力</th>
-                            <td class="col-highlight">
+                            <td class="col-highlight" data-label="学式WorkShop">
                                 <span class="mark mark-good">◎</span>
                                 実演販売技術
                             </td>
-                            <td>
+                            <td data-label="一般営業研修">
                                 <span class="mark">△</span>
                             </td>
-                            <td>
+                            <td data-label="演技ワーク">
                                 <span class="mark mark-bad">×</span>
                             </td>
                         </tr>
                         <tr>
                             <th>表現力</th>
-                            <td class="col-highlight">
+                            <td class="col-highlight" data-label="学式WorkShop">
                                 <span class="mark mark-good">◎</span>
                                 俳優・モデルメソッド
                             </td>
-                            <td>
+                            <td data-label="一般営業研修">
                                 <span class="mark mark-bad">×</span>
                             </td>
-                            <td>
+                            <td data-label="演技ワーク">
                                 <span class="mark mark-good">◎</span>
                             </td>
                         </tr>
                         <tr>
                             <th>汎用性</th>
-                            <td class="col-highlight">
+                            <td class="col-highlight" data-label="学式WorkShop">
                                 <span class="mark mark-good">◎</span>
                                 幅広く活用可能
                             </td>
-                            <td>
+                            <td data-label="一般営業研修">
                                 <span class="mark">△</span>
                             </td>
-                            <td>
+                            <td data-label="演技ワーク">
                                 <span class="mark">△</span>
                             </td>
                         </tr>
                         <tr>
                             <th>実践力</th>
-                            <td class="col-highlight">
+                            <td class="col-highlight" data-label="学式WorkShop">
                                 <span class="mark mark-good">◎</span>
                                 体験型・即実践
                             </td>
-                            <td>
+                            <td data-label="一般営業研修">
                                 <span class="mark">△</span>
                             </td>
-                            <td>
+                            <td data-label="演技ワーク">
                                 <span class="mark">△</span>
                             </td>
                         </tr>
