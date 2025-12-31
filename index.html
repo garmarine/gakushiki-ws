@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学式 WorkShop!! | 売れる・話せる・伝わる技術</title>
+    <title>学(GAKU)式 WorkShop!! | 売れる・話せる・伝わる技術</title>
     <style>
         /* --- 基本設定 --- */
         :root {
@@ -85,50 +85,44 @@
             height: 70px;
         }
 
-        /* --- ロゴデザイン（GAKUを上に乗せる設定） --- */
+        /* --- ロゴデザイン（修正済：GAKUを小さく学の上に乗せる） --- */
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary-color);
         }
 
-        .logo-text-group {
-            display: inline-block; 
-        }
+        .logo-text-group { display: inline-block; }
 
-        /* 「学」を包む枠 */
         .gaku-wrapper {
             display: inline-block;
             position: relative;
-            margin-right: 0; /* 隙間をなくす */
+            margin-right: 0; /* 隙間なし */
         }
 
-        /* 上に乗る「GAKU」：サイズ調整 */
         .gaku-ruby-text {
             position: absolute;
             top: -0.6em; 
             left: 50%;
             transform: translateX(-50%);
-            
-            font-size: 0.3em; /* 学の幅に収まるよう小さく */
+            font-size: 0.3em; /* 学の幅に収まるサイズ */
             color: var(--highlight-color);
             font-weight: bold;
             font-family: Arial, sans-serif;
-            letter-spacing: 0; /* 文字間隔を詰める */
+            letter-spacing: 0;
             white-space: nowrap;
             width: 100%;
             text-align: center;
         }
 
-        .gaku-kanji {
-            font-size: 1em;
-        }
+        .gaku-kanji { font-size: 1em; }
 
         /* --- ヒーローセクション --- */
         .hero {
+            /* main.jpg を背景として設定 */
             background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.7)), url('main.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: center; /* 画像の中央を表示 */
             text-align: center;
             padding: 120px 0;
         }
@@ -190,7 +184,7 @@
             left: 0;
         }
 
-        /* --- 強み（メソッド）セクション --- */
+        /* --- 強み（メソッド）セクション：画像対応 --- */
         .method {
             background-color: #f0f8ff;
         }
@@ -204,10 +198,27 @@
 
         .method-card {
             background: white;
-            padding: 30px;
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .method-img-area {
+            width: 100%;
+            height: 250px; /* 画像エリアの高さ */
+            background-color: #ddd;
+        }
+        
+        .method-img-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 比率が違っても中央でトリミングして埋める */
+            object-position: center;
+        }
+
+        .method-content {
+            padding: 30px;
         }
 
         .method-card h3 {
@@ -224,13 +235,13 @@
             margin: 20px 0;
         }
 
-        /* --- 比較表セクション（新規追加） --- */
+        /* --- 比較表セクション --- */
         .comparison {
             background-color: white;
         }
 
         .point-bubble {
-            background-color: #003366; /* 濃い青 */
+            background-color: #003366;
             color: white;
             font-weight: bold;
             padding: 10px 20px;
@@ -303,7 +314,7 @@
         .mark-bad { color: #aaa; }
 
 
-        /* --- サービスメニュー（3分割） --- */
+        /* --- サービスメニュー：画像対応 --- */
         .service {
             background-color: #f9f9f9;
         }
@@ -318,13 +329,33 @@
         .service-card {
             border: 2px solid #eee;
             border-radius: 15px;
-            padding: 30px 20px;
+            overflow: hidden;
             text-align: center;
             transition: all 0.3s;
             background: white;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+
+        .service-img-area {
+            width: 100%;
+            height: 200px; /* カードの画像エリア高さ */
+            background-color: #ddd;
+        }
+
+        .service-img-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 崩れず埋める */
+            object-position: center; /* 真ん中を表示 */
+        }
+
+        .service-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
@@ -357,6 +388,7 @@
             padding: 10px;
             border-radius: 5px;
             font-weight: bold;
+            margin-top: auto;
         }
 
         /* --- 講師紹介 --- */
@@ -374,7 +406,7 @@
             width: 300px;
             height: 300px;
             background-color: #ddd;
-            border-radius: 50%;
+            border-radius: 50%; /* ここで丸く切り抜く */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -386,7 +418,8 @@
         .instructor-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* 正方形でなくても丸く収める */
+            object-position: center; /* 顔を真ん中に */
         }
 
         .instructor-text h3 {
@@ -472,7 +505,6 @@
                 height: 200px;
             }
 
-            /* 比較表の調整 */
             .compare-table {
                 min-width: 600px;
             }
@@ -538,12 +570,22 @@
             <h2>なぜ変われるのか？<br>唯一無二の融合メソッド</h2>
             <div class="method-grid">
                 <div class="method-card">
-                    <h3>実演販売の「売れる技術」</h3>
-                    <p>買う気がない人、興味ゼロの相手にもプレゼンして響感してもらい、「欲しい！」と思わせるプロの技術。</p>
+                    <div class="method-img-area">
+                        <img src="method-sales.jpg" alt="実演販売の様子">
+                    </div>
+                    <div class="method-content">
+                        <h3>実演販売の「売れる技術」</h3>
+                        <p>買う気がない人、興味ゼロの相手にもプレゼンして響感してもらい、「欲しい！」と思わせるプロの技術。</p>
+                    </div>
                 </div>
                 <div class="method-card">
-                    <h3>俳優・モデルの「表現力」</h3>
-                    <p>オーディションという競争社会で「選ばれる」ための自己表現。相手に伝わる演技メソッド。</p>
+                    <div class="method-img-area">
+                        <img src="method-acting.jpg" alt="演技ワークショップの様子">
+                    </div>
+                    <div class="method-content">
+                        <h3>俳優・モデルの「表現力」</h3>
+                        <p>オーディションという競争社会で「選ばれる」ための自己表現。相手に伝わる演技メソッド。</p>
+                    </div>
                 </div>
             </div>
             <div class="plus-icon">×</div>
@@ -636,33 +678,42 @@
             <h2>選べる3つのスタイル</h2>
             <div class="service-grid">
                 <div class="service-card">
-                    <div>
+                    <div class="service-img-area">
+                        <img src="service-company.jpg" alt="企業研修の様子">
+                    </div>
+                    <div class="service-content">
                         <h3>企業研修</h3>
                         <p>チームビルディング、離職率改善、営業力強化に。御社の課題に合わせたカスタムメイドの研修を行います。</p>
-                    </div>
-                    <div class="service-note">
-                        <span style="color: #ff3300;">●</span> 企業への訪問も可能です<br>
-                        (費用はヒアリングの上、お見積りいたします)
+                        <div class="service-note">
+                            <span style="color: #ff3300;">●</span> 企業への訪問も可能です<br>
+                            (費用はヒアリングの上、お見積りいたします)
+                        </div>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div>
+                    <div class="service-img-area">
+                        <img src="service-workshop.jpg" alt="ワークショップの様子">
+                    </div>
+                    <div class="service-content">
                         <h3>ワークショップ</h3>
                         <p>定期的に開催されるグループワーク。多様な参加者と共に、楽しみながらコミュニケーション力を磨きます。</p>
-                    </div>
-                    <div class="service-note">
-                        一般参加・グループ参加歓迎
+                        <div class="service-note">
+                            一般参加・グループ参加歓迎
+                        </div>
                     </div>
                 </div>
 
                 <div class="service-card">
-                    <div>
+                    <div class="service-img-area">
+                        <img src="service-personal.jpg" alt="個人レッスンの様子">
+                    </div>
+                    <div class="service-content">
                         <h3>個人レッスン</h3>
                         <p>「オーディションに受かりたい」「大事なプレゼンがある」など、個人の目標に合わせたマンツーマン指導。</p>
-                    </div>
-                    <div class="service-note">
-                        オンライン / 対面 対応可能
+                        <div class="service-note">
+                            オンライン / 対面 対応可能
+                        </div>
                     </div>
                 </div>
             </div>
@@ -674,7 +725,7 @@
             <h2>講師プロフィール</h2>
             <div class="instructor-profile">
                 <div class="instructor-img">
-                    <img src="https://via.placeholder.com/300x300?text=Gaku+Fujimoto" alt="藤本学">
+                    <img src="profile.jpg" alt="藤本学">
                 </div>
                 <div class="instructor-text">
                     <span class="title">俳優・モデル・実演販売士・ワークショップ講師</span>
